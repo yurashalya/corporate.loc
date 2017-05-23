@@ -38,6 +38,10 @@ class RouteServiceProvider extends ServiceProvider
             return \Corp\Menu::where('id',$value)->first();
         });
 
+        $router->bind('users', function ($value) {
+            return \Corp\User::find($value);
+        });
+
     }
 
     /**
@@ -70,3 +74,4 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 }
+
