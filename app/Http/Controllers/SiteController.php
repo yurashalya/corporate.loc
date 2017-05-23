@@ -18,6 +18,7 @@ class SiteController extends Controller
     protected $s_rep;
     protected $a_rep;
     protected $m_rep;
+    protected $c_rep;
 
     protected $keywords;
     protected $meta_desc;
@@ -52,6 +53,11 @@ class SiteController extends Controller
         if($this->contentRightBar) {
             $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
             $this->vars = array_add($this->vars,'rightBar',$rightBar);
+        }
+
+        if($this->contentLeftBar) {
+            $leftBar = view(env('THEME').'.leftBar')->with('content_leftBar',$this->contentLeftBar)->render();
+            $this->vars = array_add($this->vars,'leftBar',$leftBar);
         }
 
         $this->vars = array_add($this->vars,'bar',$this->bar);
