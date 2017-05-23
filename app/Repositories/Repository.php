@@ -9,7 +9,7 @@ abstract class Repository {
     protected $model = FALSE;
 
 
-    public function get($select = '*',$take = FALSE) {
+    public function get($select = '*',$take = FALSE,$pagination = FALSE) {
 
         $builder = $this->model->select($select);
 
@@ -18,6 +18,9 @@ abstract class Repository {
         }
 
 
+        if($pagination) {
+            return $this->check($builder->paginate(Config::get('settings.paginate')));
+        }
 
         return $this->check($builder->get());
     }
